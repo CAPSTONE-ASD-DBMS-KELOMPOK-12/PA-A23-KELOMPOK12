@@ -28,4 +28,4 @@ Pada program ini juga terdapat beberapa modul yang digunakan, yaitu:
 1. Registrasi.
 2. Login.
 3. Penyumbangan Barang.
-4. 4. Pendonasian.
+4. Pendonasian.

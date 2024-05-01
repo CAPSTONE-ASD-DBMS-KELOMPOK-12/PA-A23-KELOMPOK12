@@ -35,6 +35,7 @@ Berikut merupakan fitur yang terdapat pada program Sustainablehood, yaitu:
   - Mengurutkan daftar donasi dan barang: donatur dapat mengurutkan daftar donasi berdasarkan tanggal terlama dan tanggal terbaru, serta mengurutkan donasi berdasarkan nama A-Z dan Z-A.
   - Mencari daftar donasi dan barang: donatur dapat mencari daftar donasi dan barang berdasarkan ID.
 3. Penerima
+  - Memperbarui permintaan kebutuhan: penerima dapat memperbarui permintaan kebutuhan.
   - Menampilkan daftar donasi dan barang: penerima dapat melihat seluruh daftar donasi dan daftar barang.
   - Mengurutkan daftar donasi dan barang: penerima dapat mengurutkan daftar donasi berdasarkan tanggal terlama dan tanggal terbaru, serta mengurutkan donasi berdasarkan nama A-Z dan Z-A.
   - Mencari daftar donasi dan barang: penerima dapat mencari daftar donasi dan barang berdasarkan ID.

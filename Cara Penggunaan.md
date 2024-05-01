@@ -27,6 +27,12 @@ Jika pengguna merupakan penerima, maka penerima akan diberikan dua pilihan yaitu
 Jika penerima belum memiliki akun, maka penerima dapat melakukan registrasi terlebih dahulu.
 ![Screenshot 2024-05-01 192758](https://github.com/CAPSTONE-ASD-DBMS-KELOMPOK-12/PA-A23-KELOMPOK12/assets/143860881/5ab4edeb-9622-4483-a0d6-59dfed5ae8b6)
 
+Ketika registrasi, penerima akan memasukkan kebutuhan yang diperlukan. Ketika pengguna ingin mengganti kebutuhan, maka pengguna dapat memperbaruinya di menu utama pengguna.
+![Screenshot 2024-05-01 204658](https://github.com/CAPSTONE-ASD-DBMS-KELOMPOK-12/PA-A23-KELOMPOK12/assets/143860881/68abe2f4-6cba-49d4-a1fd-5abecc643ca2)
+
+![Screenshot 2024-05-01 204459](https://github.com/CAPSTONE-ASD-DBMS-KELOMPOK-12/PA-A23-KELOMPOK12/assets/143860881/6f070898-8b5b-47a1-9e85-d071ce7406f8)
+
+
 
 
 

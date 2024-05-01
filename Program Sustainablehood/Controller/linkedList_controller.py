@@ -5,18 +5,15 @@ from prettytable import PrettyTable
 mydb = Database()
 mydb = Database().mydb
 
-# Node class untuk linked list
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
-# Linked list class
 class LinkedList:
     def __init__(self):
         self.head = None
 
-    # Menambahkan node baru ke linked list
     def append(self, data):
         new_node = Node(data)
         if self.head is None:
@@ -30,14 +27,12 @@ class LinkedList:
     def clear(self):
         self.head = None
 
-    # Cetak isi linked list
     def display(self):
         current = self.head
         while current:
             print(current.data)
             current = current.next
 
-# Mengambil data dari tabel donasi dan menyimpannya dalam linked list
 def donasi_linkedlist():
     linked_list = LinkedList()
     cursor = mydb.cursor()
@@ -58,7 +53,6 @@ def donasi_linkedlist():
         linked_list.append(data)
     return linked_list
 
-# Mengambil data dari tabel barang dan menyimpannya dalam linked list
 def barang_linkedlist():
     linked_list = LinkedList()
     cursor = mydb.cursor()
@@ -78,7 +72,7 @@ def barang_linkedlist():
     return linked_list
 
 def penerima_linkedlist():
-    linked_list = LinkedList()  # Membuat objek linked list baru
+    linked_list = LinkedList()
     cursor = mydb.cursor()
     cursor.execute("SELECT * FROM penerima")
     result = cursor.fetchall()
@@ -102,18 +96,15 @@ def penerima_linkedlist():
 
 donasi_list = donasi_linkedlist()
 
-# Fungsi untuk melakukan jump search pada linked list donasi berdasarkan ID Donasi
 def jump_search_donasi(head, target_id):
     current = head
     while current:
         if current.data['ID_Donasi'] == target_id:
-            return current.data  # Mengembalikan data jika ditemukan
+            return current.data  
         current = current.next
-    return None  # Mengembalikan None jika data tidak ditemukan
+    return None 
 
-# jump search donasi berdasarkan ID Donasi
 def jump_search_id_donasi():
-    # Mencari data dengan ID_Donasi menggunakan jump search
     target_id = input("\nMasukkan ID Donasi yang ingin dicari: ")
     result = jump_search_donasi(donasi_list.head, target_id)
     if result:
@@ -128,17 +119,15 @@ def jump_search_id_donasi():
 
 barang_list = barang_linkedlist()
 
-# jump search tabel barang berdasarkan ID Barang
 def jumpSearchBarangID(head, target_id):
     current = head
     while current:
         if current.data['id_barang'] == target_id:
-            return current.data  # Mengembalikan data jika ditemukan
+            return current.data  
         current = current.next
-    return None  # Mengembalikan None jika data tidak ditemukan
+    return None  
 
 def jump_search_barang_id():
-    # Pencarian dengan menggunakan Jump Search
     target_id = input("Masukkan ID Barang yang ingin dicari: ")
     result = jumpSearchBarangID(barang_list.head, target_id)
     if result:
@@ -156,7 +145,6 @@ def quickSortDonasiAscending(data):
     else:
         pivot = data[0]
 
-        # Konversi tanggal dari string ke objek datetime.date
         pivot_date = datetime.strptime(str(pivot['Tanggal_Donasi']), '%Y-%m-%d').date()
 
         less_than_pivot = [x for x in data[1:] if datetime.strptime(str(x['Tanggal_Donasi']), '%Y-%m-%d').date() <= pivot_date]
@@ -167,9 +155,7 @@ def quickSortDonasiAscending(data):
 
 donasi_list = donasi_linkedlist()
 
-# Fungsi untuk melakukan pengurutan data donasi berdasarkan Tanggal Donasi
 def quick_sort_donasi_ascending():
-    # Ubah LinkedList menjadi list
     list_data = []
     current = donasi_list.head
     while current:
@@ -191,7 +177,6 @@ def quickSortDonasiDescending(data):
     else:
         pivot = data[0]
 
-        # Konversi tanggal dari string ke objek datetime.date
         pivot_date = datetime.strptime(str(pivot['Tanggal_Donasi']), '%Y-%m-%d').date()
 
         less_than_pivot = [x for x in data[1:] if datetime.strptime(str(x['Tanggal_Donasi']), '%Y-%m-%d').date() >= pivot_date]
@@ -200,7 +185,6 @@ def quickSortDonasiDescending(data):
         return quickSortDonasiDescending(less_than_pivot) + [pivot] + quickSortDonasiDescending(greater_than_pivot)
 
 def quick_sort_donasi_descending():
-    # Ubah LinkedList menjadi list
     list_data = []
     current = donasi_list.head
     while current:
@@ -222,10 +206,8 @@ def quickSortBarangAscending(data):
     else:
         pivot = data[0]
 
-        # Ambil nama barang dari pivot
         pivot_name = pivot['nama_barang']
 
-        # Pisahkan data menjadi dua bagian: yang kurang dari pivot dan yang lebih besar dari pivot
         less_than_pivot = []
         greater_than_pivot = []
         for x in data[1:]:
@@ -234,12 +216,9 @@ def quickSortBarangAscending(data):
             else:
                 greater_than_pivot.append(x)
 
-        # Rekursi untuk kedua bagian dan gabungkan dengan pivot
         return quickSortBarangAscending(less_than_pivot) + [pivot] + quickSortBarangAscending(greater_than_pivot)
 
-# Fungsi untuk melakukan pengurutan data barang berdasarkan Nama Barang
 def quick_sort_barang_ascending():
-    # Ubah LinkedList menjadi list
     list_data = []
     current = barang_list.head
     while current:
@@ -261,24 +240,19 @@ def quickSortBarangDescending(data):
     else:
         pivot = data[0]
 
-        # Ambil nama barang dari pivot
         pivot_name = pivot['nama_barang']
 
-        # Pisahkan data menjadi dua bagian: yang kurang dari pivot dan yang lebih besar dari pivot
         less_than_pivot = []
         greater_than_pivot = []
         for x in data[1:]:
-            if x['nama_barang'] >= pivot_name:  # Perubahan disini, dari <= menjadi >=
+            if x['nama_barang'] >= pivot_name:  
                 less_than_pivot.append(x)
             else:
                 greater_than_pivot.append(x)
 
-        # Rekursi untuk kedua bagian dan gabungkan dengan pivot
         return quickSortBarangDescending(less_than_pivot) + [pivot] + quickSortBarangDescending(greater_than_pivot)
 
-# Fungsi untuk melakukan pengurutan data barang berdasarkan Nama Barang secara descending
 def quick_sort_barang_descending():
-    # Ubah LinkedList menjadi list
     list_data = []
     current = barang_list.head
     while current:

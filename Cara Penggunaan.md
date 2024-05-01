@@ -31,15 +31,19 @@ Admin dapat mengurutkan daftar donasi dan barang.
 
 Mengurutkan donasi:
 ![Screenshot 2024-05-01 183825](https://github.com/CAPSTONE-ASD-DBMS-KELOMPOK-12/PA-A23-KELOMPOK12/assets/143860881/cc1b4ffd-3a16-49dd-9114-8310dad5b672)
+
 Mengurutkan daftar donasi berdasarkan tanggal terlama:
 ![Screenshot 2024-05-01 184535](https://github.com/CAPSTONE-ASD-DBMS-KELOMPOK-12/PA-A23-KELOMPOK12/assets/143860881/12ff9201-8d39-42cd-bb69-7b873255da58)
+
 Mengurutkan daftar donasi berdasarkan tanggal terbaru:
 ![Screenshot 2024-05-01 184622](https://github.com/CAPSTONE-ASD-DBMS-KELOMPOK-12/PA-A23-KELOMPOK12/assets/143860881/e09d0808-2599-4886-9c6e-7942a06c82ce)
 
 Mengurutkan barang:
 ![Screenshot 2024-05-01 185027](https://github.com/CAPSTONE-ASD-DBMS-KELOMPOK-12/PA-A23-KELOMPOK12/assets/143860881/11c15fb4-53bf-45ef-87fb-c161facd1b47)
+
 Mengurutkan barang berdasarkan nama A-Z:
 ![Screenshot 2024-05-01 185053](https://github.com/CAPSTONE-ASD-DBMS-KELOMPOK-12/PA-A23-KELOMPOK12/assets/143860881/547a6e6b-cecb-46e6-b18b-611b33364082)
+
 Mengurutkan barang berdasarkan nama Z-A:
 ![Screenshot 2024-05-01 185230](https://github.com/CAPSTONE-ASD-DBMS-KELOMPOK-12/PA-A23-KELOMPOK12/assets/143860881/a14275d3-903d-410a-8abc-d8b76c5c5903)
 

@@ -16,15 +16,12 @@ class Admin:
         self.mycursor = self.db.mycursor
         self.mydb = self.db.mydb
 
-    # Fungsi untuk menambahkan data ke linked list dan database
     def tambah_donasi(self, data):
         try:
-            # Menambahkan data ke database
             query = "INSERT INTO donasi (ID_Donasi, Status_donasi, jumlah_barang, Tanggal_Donasi, id_barang, ID_Penerima, id_donatur, ID_Admin) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
             self.mycursor.execute(query, (data['ID_Donasi'], data['Status_donasi'], data['jumlah_barang'], data['Tanggal_Donasi'], data['id_barang'], data['ID_Penerima'], data['id_donatur'], data['ID_Admin']))
             self.mydb.commit()
 
-            # Update jumlah barang di database
             query_select_barang = "SELECT jumlah_barang FROM barang WHERE id_barang = %s"
             self.mycursor.execute(query_select_barang, (data['id_barang'],))
             jumlah_barang_sekarang = self.mycursor.fetchone()[0]
@@ -34,7 +31,6 @@ class Admin:
             self.mycursor.execute(query_update_barang, (jumlah_barang_terbaru, data['id_barang']))
             self.mydb.commit()
             
-            # Menambahkan data ke linked list
             donasi_list.append(data)
             linkedList_controller.donasi_list = donasi_list
             self.inventory.append(data)
@@ -45,30 +41,23 @@ class Admin:
             print('error', e)
             time.sleep(2.5)
 
-    # Fungsi untuk membaca (read) data dari linked list
     def lihat_donasi(self):
         current = donasi_list.head
         print("\nData Donasi:")
         
-        # Inisialisasi PrettyTable
         table = PrettyTable()
         table.field_names = ["ID Donasi", "Status Donasi", "Jumlah Barang", "Tanggal Donasi", "ID Barang", "ID Penerima", "ID Donatur", "ID Admin"]
         
-        # Menambahkan baris-baris data ke PrettyTable
         while current:
             data = current.data
             table.add_row([data['ID_Donasi'], data['Status_donasi'], data['jumlah_barang'], data['Tanggal_Donasi'], data['id_barang'], data['ID_Penerima'], data['id_donatur'], data['ID_Admin']])
             current = current.next
-
-        # Cetak PrettyTable
         print(table)
 
-    # Fungsi untuk memperbarui (update) data dalam linked list dan database
     def update_donasi(self):
         try:
             id_donasi = input("\nMasukkan ID Donasi yang akan diupdate: ")
 
-            # Cek apakah donasi dengan ID tersebut ada dalam database
             self.mycursor.execute("SELECT * FROM donasi WHERE ID_Donasi = %s", (id_donasi,))
             donasi = self.mycursor.fetchone()
             if not donasi:
@@ -90,14 +79,12 @@ class Admin:
             field_to_update = input("Pilih nomor field yang ingin diupdate (1-7): ")
             new_value = input("\nMasukkan nilai baru: ")
 
-            # Update data donasi dalam database
             fields = ['Status_donasi', 'jumlah_barang', 'Tanggal_Donasi', 'id_barang', 'ID_Penerima', 'id_donatur', 'ID_Admin']
             field = fields[int(field_to_update) - 1]
             query = f"UPDATE donasi SET {field} = %s WHERE ID_Donasi = %s"
             self.mycursor.execute(query, (new_value, id_donasi))
             self.mydb.commit()
 
-            # Perbarui juga data dalam linked list
             current = donasi_list.head
             while current:
                 if current.data['ID_Donasi'] == id_donasi:
@@ -115,14 +102,11 @@ class Admin:
             print("error")
             time.sleep(2)
 
-    # Fungsi untuk menghapus data dari linked list dan database
     def hapus_penerima(self, target_id):
         current = penerima_list.head
         prev = None
         while current:
             if current.data['ID_Penerima'] == target_id:
-                # Menghapus data dari database
-                # mycursor = self.mycursor.mydb.mycursor()
                 query = "DELETE FROM penerima WHERE ID_Penerima = %s"
                 self.mycursor.execute(query, (target_id,))
                 self.mydb.commit()
